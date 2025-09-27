@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SISBIM - Sistem Informasi Buku Induk MA Ulil Amwal</title>
+    <meta
+      name="description"
+      content="Sistem Informasi Buku Induk Siswa berbasis web untuk MA Ulil Amwal Bulukumba"
+    />
+    <meta
+      name="keywords"
+      content="SISBIM, buku induk siswa, sistem informasi sekolah, MA Ulil Amwal"
+    />
+    <meta name="author" content="MA Ulil Amwal Bulukumba" />
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      :root {
+        --primary-color: #006a67;
+        --secondary-color: #28a745;
+        --accent-color: #ffc107;
+        --dark-color: #343a40;
+        --light-color: #f8f9fa;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark-color);
+        padding-top: 80px;
+      }
+
+      /* Navbar */
+      .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        padding: 1rem 0;
+      }
+
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--primary-color) !important;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .navbar-brand:hover {
+        color: var(--primary-color) !important;
+      }
+
+      .navbar-logo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .navbar-nav .nav-link {
+        color: var(--dark-color) !important;
+        font-weight: 500;
+        margin: 0 10px;
+        transition: all 0.3s ease;
+        border-radius: 25px;
+        padding: 8px 20px !important;
+      }
+
+      .navbar-nav .nav-link:hover {
+        background-color: var(--primary-color);
+        color: white !important;
+        transform: translateY(-2px);
+      }
+
+      .navbar-nav .nav-link.active {
+        background-color: var(--primary-color);
+        color: white !important;
+      }
+
+      .btn-login {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white !important;
+        border: none;
+        border-radius: 25px;
+        padding: 8px 25px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn-login:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 106, 103, 0.4);
+        color: white !important;
+      }
+
+      .navbar.scrolled {
+        padding: 0.5rem 0;
+        background: rgba(255, 255, 255, 0.98);
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          #004d4a 100%
+        );
+        color: white;
+        padding: 60px 0 100px;
+        position: relative;
+        overflow: hidden;
+        margin-top: -80px;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,133.3C960,128,1056,96,1152,90.7C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>')
+          no-repeat bottom;
+        background-size: cover;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero .lead {
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+      }
+
+      .btn-hero {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-hero:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn-outline-light:hover {
+        background-color: white;
+        color: var(--primary-color);
+      }
+
+      /* Features Section */
+      .features {
+        padding: 80px 0;
+        background-color: var(--light-color);
+      }
+
+      .feature-card {
+        background: white;
+        border-radius: 15px;
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        height: 100%;
+        border: 2px solid transparent;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        border-color: var(--primary-color);
+      }
+
+      .feature-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+        font-size: 2rem;
+        color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .feature-card h3 {
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+
+      /* About Section */
+      .about {
+        padding: 80px 0;
+      }
+
+      .about-content {
+        background: white;
+        border-radius: 20px;
+        padding: 50px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .about h2 {
+        color: var(--primary-color);
+        margin-bottom: 25px;
+        font-weight: 700;
+      }
+
+      /* Benefits Section */
+      .benefits {
+        padding: 80px 0;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      }
+
+      .benefit-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .benefit-item:hover {
+        transform: translateX(10px);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .benefit-icon {
+        width: 50px;
+        height: 50px;
+        background: var(--secondary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        margin-right: 20px;
+        flex-shrink: 0;
+      }
+
+      /* CTA Section */
+      .cta {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      .cta h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      .cta .lead {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        opacity: 0.95;
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 80px 0;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      }
+
+      .contact-icon {
+        width: 80px;
+        height: 80px;
+        background: rgba(0, 106, 103, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        transition: all 0.3s ease;
+      }
+
+      .contact-item:hover .contact-icon {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-5px);
+      }
+
+      .contact-item:hover .contact-icon i {
+        color: white !important;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--dark-color);
+        color: white;
+        padding: 40px 0 20px;
+        text-align: center;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero .lead {
+          font-size: 1.1rem;
+        }
+
+        .about-content {
+          padding: 30px 20px;
+        }
+      }
+
+      /* Loading Animation */
+      .loading-spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#home">
+          <div class="navbar-logo">
+            <img class="img-fluid" src="assets/img/logo.jpg" alt="" />
+          </div>
+          SISBIM
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#home">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#features">Fitur</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">Tentang</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#benefits">Keuntungan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Kontak</a>
+            </li>
+          </ul>
+          <div class="ms-3">
+            <a href="auth/login.html" class="btn-login">
+              <i class="fas fa-sign-in-alt me-2"></i>Masuk
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <div
+          class="row align-items-center"
+          style="min-height: calc(100vh - 80px)"
+        >
+          <div class="col-lg-6">
+            <h1 data-aos="fade-right" data-aos-duration="1000">
+              Sistem Informasi Buku Induk MA Ulil Amwal
+            </h1>
+            <p
+              class="lead"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+              data-aos-delay="200"
+            >
+              SISBIM memudahkan pengelolaan data siswa secara digital untuk MA
+              Ulil Amwal Bulukumba, sehingga administrasi sekolah menjadi lebih
+              efisien dan akurat.
+            </p>
+            <div
+              class="hero-buttons"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay="400"
+            >
+              <button
+                class="btn btn-light btn-hero me-3"
+                onclick="redirectToLogin()"
+              >
+                <i class="fas fa-sign-in-alt me-2"></i>Masuk Sistem
+              </button>
+              <button
+                class="btn btn-outline-light btn-hero"
+                onclick="scrollToFeatures()"
+              >
+                <i class="fas fa-info-circle me-2"></i>Lihat Fitur
+              </button>
+            </div>
+          </div>
+          <div
+            class="col-lg-6 text-center"
+            data-aos="fade-left"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+          >
+            <img
+              class="img-fluid rounded shadow"
+              src="assets/img/hero.jpg"
+              alt="Sekolah"
+              style="
+                max-width: 420px;
+                max-height: 420px;
+                width: 100%;
+                height: auto;
+                margin: 0 auto;
+              "
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="display-4 fw-bold" style="color: var(--secondary-color)">
+            Fitur Unggulan
+          </h2>
+          <p class="lead text-muted">
+            Sistem informasi lengkap untuk mengelola data siswa secara digital
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3>Multi-User System</h3>
+              <p>
+                Akses terpisah untuk Admin, Guru, dan Kepala Sekolah dengan
+                fitur yang sesuai peran masing-masing
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <h3>Responsive Design</h3>
+              <p>
+                Dapat diakses dari desktop, tablet, maupun smartphone dengan
+                tampilan yang optimal
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <h3>Analitik & Statistik</h3>
+              <p>
+                Visualisasi data siswa, performa akademik, dan statistik sekolah
+                yang komprehensif
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-edit"></i>
+              </div>
+              <h3>Input Nilai Digital</h3>
+              <p>
+                Sistem input nilai yang terintegrasi dengan konversi otomatis
+                dan rekapitulasi
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <h3>Laporan Lengkap</h3>
+              <p>
+                Generate laporan siswa, nilai akademik, dan statistik sekolah
+                dalam berbagai format
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h3>Keamanan Data</h3>
+              <p>
+                Sistem backup otomatis dan enkripsi data untuk menjaga keamanan
+                informasi
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6" data-aos="fade-right">
+            <div class="about-content">
+              <h2>Tentang SISBIM</h2>
+              <p class="lead">
+                <strong>SISBIM</strong> (Sistem Informasi Buku Induk Siswa)
+                adalah solusi digital modern untuk mengelola data siswa di MA
+                Ulil Amwal Bulukumba.
+              </p>
+              <p>
+                Sistem ini dirancang khusus untuk memenuhi kebutuhan manajemen
+                data sekolah Islam yang komprehensif, mulai dari pendaftaran
+                siswa baru hingga laporan kelulusan.
+              </p>
+              <p>
+                Dengan antarmuka yang intuitif dan fitur yang lengkap, SISBIM
+                membantu meningkatkan efisiensi administrasi sekolah dan
+                memberikan akses informasi yang cepat dan akurat.
+              </p>
+              <div class="mt-4">
+                <span class="badge bg-primary me-2 mb-2"
+                  >Multi-User Access</span
+                >
+                <span class="badge bg-success me-2 mb-2">Real-time Data</span>
+                <span class="badge bg-primary me-2 mb-2">Mobile Friendly</span>
+                <span class="badge bg-warning me-2 mb-2">Cloud Ready</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <img
+              src="assets/img/sekolah.jpg"
+              alt="SISBIM Dashboard"
+              class="img-fluid rounded shadow"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="display-4 fw-bold" style="color: var(--secondary-color)">
+            Keuntungan Menggunakan Sistem
+          </h2>
+          <p class="lead text-muted">
+            Manfaat nyata untuk administrasi sekolah yang lebih baik
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div>
+                <h5>Hemat Waktu</h5>
+                <p>Proses administrasi menjadi lebih cepat dan efisien</p>
+              </div>
+            </div>
+
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fas fa-database"></i>
+              </div>
+              <div>
+                <h5>Data Terintegrasi</h5>
+                <p>Semua data siswa tersimpan dalam satu sistem terpadu</p>
+              </div>
+            </div>
+
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div>
+                <h5>Pantau Performa</h5>
+                <p>Monitoring akademik siswa secara real-time</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fas fa-file-download"></i>
+              </div>
+              <div>
+                <h5>Laporan Instan</h5>
+                <p>Generate laporan dalam berbagai format dengan mudah</p>
+              </div>
+            </div>
+
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fas fa-users-cog"></i>
+              </div>
+              <div>
+                <h5>Akses Terkontrol</h5>
+                <p>Manajemen hak akses berdasarkan peran pengguna</p>
+              </div>
+            </div>
+
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fas fa-sync"></i>
+              </div>
+              <div>
+                <h5>Update Real-time</h5>
+                <p>Data selalu terbaru dan tersinkronisasi</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container" data-aos="zoom-in">
+        <h2>Siap Meningkatkan Efisiensi Sekolah Anda?</h2>
+        <p class="lead">
+          Bergabunglah dengan sekolah yang telah menggunakan SISBIM untuk
+          manajemen data siswa yang lebih baik
+        </p>
+        <button
+          class="btn btn-light btn-lg btn-hero"
+          onclick="redirectToLogin()"
+        >
+          <i class="fas fa-rocket me-2"></i>Mulai Sekarang
+        </button>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="display-4 fw-bold" style="color: var(--secondary-color)">
+            Kontak
+          </h2>
+          <p class="lead text-muted">Tim kami siap membantu Anda</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4" data-aos="fade-right" data-aos-delay="100">
+            <div class="contact-item text-center mb-4">
+              <div class="contact-icon mb-3">
+                <i class="fas fa-map-marker-alt fa-3x text-primary"></i>
+              </div>
+              <h5>Alamat</h5>
+              <p>
+                MA Ulil Amwal Bulukumba<br />Jl. Pendidikan No. 123<br />Bulukumba,
+                Sulawesi Selatan
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="contact-item text-center mb-4">
+              <div class="contact-icon mb-3">
+                <i class="fas fa-phone fa-3x text-success"></i>
+              </div>
+              <h5>Telepon</h5>
+              <p>(0413) 123456<br />0812-3456-7890</p>
+            </div>
+          </div>
+          <div class="col-lg-4" data-aos="fade-left" data-aos-delay="300">
+            <div class="contact-item text-center mb-4">
+              <div class="contact-icon mb-3">
+                <i class="fas fa-envelope fa-3x text-primary"></i>
+              </div>
+              <h5>Email</h5>
+              <p>info@ulilamwal.sch.id<br />sisbim@ulilamwal.sch.id</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>SISBIM - Sistem Informasi Buku Induk</h5>
+            <p>MA Ulil Amwal Bulukumba</p>
+          </div>
+          <div class="col-md-6">
+            <div class="social-links">
+              <a href="#" class="text-white me-3"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="text-white me-3"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="text-white me-3"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+        <hr class="my-4 bg-secondary" />
+        <p class="mb-0">
+          &copy; 2025 SISBIM MA Ulil Amwal. All rights reserved. | Developed
+          with <i class="fas fa-heart text-danger"></i> for better education
+        </p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100,
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Active navigation highlighting
+      window.addEventListener("scroll", function () {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (scrollY >= sectionTop - 200) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+          }
+        });
+      });
+
+      // Redirect to login
+      function redirectToLogin() {
+        window.location.href = "auth/login.html";
+      }
+
+      // Scroll to features
+      function scrollToFeatures() {
+        document.getElementById("features").scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+
+      // Add smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Add loading state to buttons
+      document.querySelectorAll(".btn-hero").forEach((button) => {
+        button.addEventListener("click", function () {
+          const originalContent = this.innerHTML;
+          this.innerHTML =
+            '<span class="loading-spinner me-2"></span>Memproses...';
+          this.disabled = true;
+
+          setTimeout(() => {
+            this.innerHTML = originalContent;
+            this.disabled = false;
+          }, 1000);
+        });
+      });
+
+      // Add parallax effect to hero section
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector(".hero");
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+      });
+
+      // Counter animation for statistics (if any)
+      function animateCounter(element, target, duration = 2000) {
+        let start = 0;
+        const increment = target / (duration / 16);
+
+        function updateCounter() {
+          start += increment;
+          if (start < target) {
+            element.textContent = Math.floor(start);
+            requestAnimationFrame(updateCounter);
+          } else {
+            element.textContent = target;
+          }
+        }
+
+        updateCounter();
+      }
+
+      // Initialize counters when in viewport
+      const observerOptions = {
+        threshold: 0.5,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Add counter animation logic here if needed
+          }
+        });
+      }, observerOptions);
+
+      // Observe elements for animation
+      document
+        .querySelectorAll(".feature-card, .benefit-item")
+        .forEach((el) => {
+          observer.observe(el);
+        });
+    </script>
+  </body>
+</html>
