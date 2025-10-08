@@ -1,295 +1,321 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard Kepala Sekolah - SISBIM MA Ulil Amwal</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
     <style>
-        .btn-primary {
-            background: linear-gradient(135deg, #006A67, #004d4a) !important;
-            border: none !important;
-        }
-        .btn-primary:hover {
-            background: linear-gradient(135deg, #004d4a, #006A67) !important;
-        }
-        .text-primary {
-            color: #006A67 !important;
-        }
-        .bg-primary {
-            background-color: #006A67 !important;
-        }
-        .dashboard-card .card-icon.bg-primary {
-            background: linear-gradient(135deg, #006A67, #004d4a) !important;
-        }
+      .btn-primary {
+        background: linear-gradient(135deg, #006a67, #004d4a) !important;
+        border: none !important;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(135deg, #004d4a, #006a67) !important;
+      }
+      .text-primary {
+        color: #006a67 !important;
+      }
+      .bg-primary {
+        background-color: #006a67 !important;
+      }
+      .dashboard-card .card-icon.bg-primary {
+        background: linear-gradient(135deg, #006a67, #004d4a) !important;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Sidebar -->
     <nav class="sidebar">
-        <div class="sidebar-header">
-            <img src="../assets/img/logo.jpg" alt="MA Ulil Amwal Logo" class="sidebar-logo">
-            <h4>SISBIM</h4>
-            <p>MA Ulil Amwal</p>
-        </div>
-        <div class="sidebar-menu">
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" href="dashboard.html">
-                        <i class="fas fa-tachometer-alt"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="laporan.html">
-                        <i class="fas fa-file-alt"></i>
-                        <span>Laporan</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="statistik-sekolah.html">
-                        <i class="fas fa-chart-bar"></i>
-                        <span>Statistik Sekolah</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="analisis-data.html">
-                        <i class="fas fa-analytics"></i>
-                        <span>Analisis Data</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="export-data.html">
-                        <i class="fas fa-download"></i>
-                        <span>Export Data</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="profil.html">
-                        <i class="fas fa-user"></i>
-                        <span>Profil</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
+      <div class="sidebar-header">
+        <img
+          src="../assets/img/logo.jpg"
+          alt="MA Ulil Amwal Logo"
+          class="sidebar-logo"
+        />
+        <h4>SISBIM</h4>
+        <p>MA Ulil Amwal</p>
+      </div>
+      <div class="sidebar-menu">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="dashboard.html">
+              <i class="fas fa-tachometer-alt"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="laporan.html">
+              <i class="fas fa-file-alt"></i>
+              <span>Laporan</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="statistik-sekolah.html">
+              <i class="fas fa-chart-bar"></i>
+              <span>Statistik Sekolah</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="export-data.html">
+              <i class="fas fa-download"></i>
+              <span>Export Data</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="profil.html">
+              <i class="fas fa-user"></i>
+              <span>Profil</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </nav>
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Top Navigation -->
-        <nav class="top-navbar">
-            <div class="d-flex align-items-center">
-                <button class="btn btn-link text-dark me-3" id="sidebarToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <h4 class="mb-0">Dashboard Kepala Sekolah</h4>
-            </div>
-            <div class="d-flex align-items-center">
-                <span class="me-3" data-user-info="username">Kepala Sekolah</span>
-                <button class="btn btn-outline-danger btn-sm" id="logoutBtn">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </button>
-            </div>
-        </nav>
+      <!-- Top Navigation -->
+      <nav class="top-navbar">
+        <div class="d-flex align-items-center">
+          <button class="btn btn-link text-dark me-3" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+          </button>
+          <h4 class="mb-0">Dashboard Kepala Sekolah</h4>
+        </div>
+        <div class="d-flex align-items-center">
+          <span class="me-3" data-user-info="username">Kepala Sekolah</span>
+          <button class="btn btn-outline-danger btn-sm" id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </div>
+      </nav>
 
-        <!-- Dashboard Content -->
-        <div class="container-fluid p-4">
-            <!-- Welcome Section -->
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="alert alert-primary">
-                        <h5 class="alert-heading">Selamat Datang, Kepala Sekolah!</h5>
-                        <p>Selamat datang di Dashboard Kepala Sekolah SISBIM MA Ulil Amwal. Anda dapat melihat overview seluruh data sekolah, analisis performa, dan laporan lengkap dari sini.</p>
-                        <hr>
-                        <p class="mb-0">Tahun Ajaran: 2024/2025 | Semester: Ganjil</p>
-                    </div>
-                </div>
+      <!-- Dashboard Content -->
+      <div class="container-fluid p-4">
+        <!-- Welcome Section -->
+        <div class="row mb-4">
+          <div class="col-12">
+            <div class="alert alert-primary">
+              <h5 class="alert-heading">Selamat Datang, Kepala Sekolah!</h5>
+              <p>
+                Selamat datang di Dashboard Kepala Sekolah SISBIM MA Ulil Amwal.
+                Anda dapat melihat overview seluruh data sekolah, analisis
+                performa, dan laporan lengkap dari sini.
+              </p>
+              <hr />
+              <p class="mb-0">Tahun Ajaran: 2024/2025 | Semester: Ganjil</p>
             </div>
-
-            <!-- Key Statistics -->
-            <div class="row mb-4">
-                <div class="col-md-3 mb-3">
-                    <div class="card dashboard-card">
-                        <div class="card-body d-flex align-items-center">
-                            <div class="card-icon bg-primary me-3">
-                                <i class="fas fa-user-graduate"></i>
-                            </div>
-                            <div>
-                                <h6 class="card-subtitle mb-1">Total Siswa</h6>
-                                <h3 class="card-title mb-0">1,234</h3>
-                                <small class="text-success"><i class="fas fa-arrow-up"></i> +5% dari tahun lalu</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <div class="card dashboard-card">
-                        <div class="card-body d-flex align-items-center">
-                            <div class="card-icon bg-success me-3">
-                                <i class="fas fa-chalkboard-teacher"></i>
-                            </div>
-                            <div>
-                                <h6 class="card-subtitle mb-1">Total Guru</h6>
-                                <h3 class="card-title mb-0">45</h3>
-                                <small class="text-success"><i class="fas fa-arrow-up"></i> +2 guru baru</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <div class="card dashboard-card">
-                        <div class="card-body d-flex align-items-center">
-                            <div class="card-icon bg-warning me-3">
-                                <i class="fas fa-school"></i>
-                            </div>
-                            <div>
-                                <h6 class="card-subtitle mb-1">Total Kelas</h6>
-                                <h3 class="card-title mb-0">24</h3>
-                                <small class="text-info">Kapasitas: 1,200</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <div class="card dashboard-card">
-                        <div class="card-body d-flex align-items-center">
-                            <div class="card-icon bg-info me-3">
-                                <i class="fas fa-percentage"></i>
-                            </div>
-                            <div>
-                                <h6 class="card-subtitle mb-1">Tingkat Kelulusan</h6>
-                                <h3 class="card-title mb-0">95%</h3>
-                                <small class="text-success"><i class="fas fa-arrow-up"></i> +3% dari tahun lalu</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Charts Row -->
-            <div class="row mb-4">
-                <div class="col-md-8 mb-3">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Statistik Siswa Per Tahun</h5>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="studentGrowthChart" height="100"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Distribusi Jurusan</h5>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="majorDistributionChart" height="150"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Academic Performance -->
-            <div class="row mb-4">
-                <div class="col-md-6 mb-3">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Performa Akademik</h5>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="academicPerformanceChart" height="120"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Kehadiran Guru & Siswa</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="row text-center">
-                                <div class="col-6">
-                                    <h3 class="text-primary">92%</h3>
-                                    <p>Kehadiran Guru</p>
-                                </div>
-                                <div class="col-6">
-                                    <h3 class="text-success">88%</h3>
-                                    <p>Kehadiran Siswa</p>
-                                </div>
-                            </div>
-                            <canvas id="attendanceChart" height="100"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Recent Activities -->
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Aktivitas Terkini</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="list-group list-group-flush">
-                                <div class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div>
-                                        <h6 class="mb-1">Laporan akademik bulan September selesai</h6>
-                                        <p class="mb-1 small text-muted">Dibuat oleh Admin</p>
-                                    </div>
-                                    <small class="text-muted">2 jam lalu</small>
-                                </div>
-                                <div class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div>
-                                        <h6 class="mb-1">5 guru baru telah bergabung</h6>
-                                        <p class="mb-1 small text-muted">Update data kepegawaian</p>
-                                    </div>
-                                    <small class="text-muted">5 jam lalu</small>
-                                </div>
-                                <div class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div>
-                                        <h6 class="mb-1">Backup data sistem berhasil</h6>
-                                        <p class="mb-1 small text-muted">Backup otomatis harian</p>
-                                    </div>
-                                    <small class="text-muted">1 hari lalu</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Quick Actions</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-grid gap-2">
-                                <a href="laporan.html" class="btn btn-primary">
-                                    <i class="fas fa-file-alt"></i> Lihat Laporan Lengkap
-                                </a>
-                                <a href="statistik-sekolah.html" class="btn btn-info">
-                                    <i class="fas fa-chart-bar"></i> Statistik Sekolah
-                                </a>
-                                <a href="analisis-data.html" class="btn btn-warning">
-                                    <i class="fas fa-analytics"></i> Analisis Data
-                                </a>
-                                <a href="export-data.html" class="btn btn-success">
-                                    <i class="fas fa-download"></i> Export Data
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
 
-        <!-- Footer -->
-        <div class="footer">
-            <p>&copy; 2024 SISBIM MA Ulil Amwal. All rights reserved.</p>
+        <!-- Key Statistics -->
+        <div class="row mb-4">
+          <div class="col-md-3 mb-3">
+            <div class="card dashboard-card">
+              <div class="card-body d-flex align-items-center">
+                <div class="card-icon bg-primary me-3">
+                  <i class="fas fa-user-graduate"></i>
+                </div>
+                <div>
+                  <h6 class="card-subtitle mb-1">Total Siswa</h6>
+                  <h3 class="card-title mb-0">1,234</h3>
+                  <small class="text-success"
+                    ><i class="fas fa-arrow-up"></i> +5% dari tahun lalu</small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card dashboard-card">
+              <div class="card-body d-flex align-items-center">
+                <div class="card-icon bg-success me-3">
+                  <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <div>
+                  <h6 class="card-subtitle mb-1">Total Guru</h6>
+                  <h3 class="card-title mb-0">45</h3>
+                  <small class="text-success"
+                    ><i class="fas fa-arrow-up"></i> +2 guru baru</small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card dashboard-card">
+              <div class="card-body d-flex align-items-center">
+                <div class="card-icon bg-warning me-3">
+                  <i class="fas fa-school"></i>
+                </div>
+                <div>
+                  <h6 class="card-subtitle mb-1">Total Kelas</h6>
+                  <h3 class="card-title mb-0">24</h3>
+                  <small class="text-info">Kapasitas: 1,200</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card dashboard-card">
+              <div class="card-body d-flex align-items-center">
+                <div class="card-icon bg-info me-3">
+                  <i class="fas fa-percentage"></i>
+                </div>
+                <div>
+                  <h6 class="card-subtitle mb-1">Tingkat Kelulusan</h6>
+                  <h3 class="card-title mb-0">95%</h3>
+                  <small class="text-success"
+                    ><i class="fas fa-arrow-up"></i> +3% dari tahun lalu</small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- Charts Row -->
+        <div class="row mb-4">
+          <div class="col-md-8 mb-3">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Statistik Siswa Per Tahun</h5>
+              </div>
+              <div class="card-body">
+                <canvas id="studentGrowthChart" height="100"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Distribusi Jurusan</h5>
+              </div>
+              <div class="card-body">
+                <canvas id="majorDistributionChart" height="150"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Academic Performance -->
+        <div class="row mb-4">
+          <div class="col-md-6 mb-3">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Performa Akademik</h5>
+              </div>
+              <div class="card-body">
+                <canvas id="academicPerformanceChart" height="120"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Kehadiran Guru & Siswa</h5>
+              </div>
+              <div class="card-body">
+                <div class="row text-center">
+                  <div class="col-6">
+                    <h3 class="text-primary">92%</h3>
+                    <p>Kehadiran Guru</p>
+                  </div>
+                  <div class="col-6">
+                    <h3 class="text-success">88%</h3>
+                    <p>Kehadiran Siswa</p>
+                  </div>
+                </div>
+                <canvas id="attendanceChart" height="100"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activities -->
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Aktivitas Terkini</h5>
+              </div>
+              <div class="card-body">
+                <div class="list-group list-group-flush">
+                  <div
+                    class="list-group-item d-flex justify-content-between align-items-start"
+                  >
+                    <div>
+                      <h6 class="mb-1">
+                        Laporan akademik bulan September selesai
+                      </h6>
+                      <p class="mb-1 small text-muted">Dibuat oleh Admin</p>
+                    </div>
+                    <small class="text-muted">2 jam lalu</small>
+                  </div>
+                  <div
+                    class="list-group-item d-flex justify-content-between align-items-start"
+                  >
+                    <div>
+                      <h6 class="mb-1">5 guru baru telah bergabung</h6>
+                      <p class="mb-1 small text-muted">
+                        Update data kepegawaian
+                      </p>
+                    </div>
+                    <small class="text-muted">5 jam lalu</small>
+                  </div>
+                  <div
+                    class="list-group-item d-flex justify-content-between align-items-start"
+                  >
+                    <div>
+                      <h6 class="mb-1">Backup data sistem berhasil</h6>
+                      <p class="mb-1 small text-muted">
+                        Backup otomatis harian
+                      </p>
+                    </div>
+                    <small class="text-muted">1 hari lalu</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Quick Actions</h5>
+              </div>
+              <div class="card-body">
+                <div class="d-grid gap-2">
+                  <a href="laporan.html" class="btn btn-primary">
+                    <i class="fas fa-file-alt"></i> Lihat Laporan Lengkap
+                  </a>
+                  <a href="statistik-sekolah.html" class="btn btn-info">
+                    <i class="fas fa-chart-bar"></i> Statistik Sekolah
+                  </a>
+                  <a href="analisis-data.html" class="btn btn-warning">
+                    <i class="fas fa-analytics"></i> Analisis Data
+                  </a>
+                  <a href="export-data.html" class="btn btn-success">
+                    <i class="fas fa-download"></i> Export Data
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>&copy; 2024 SISBIM MA Ulil Amwal. All rights reserved.</p>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -297,68 +323,81 @@
     <script src="../assets/js/auth.js"></script>
     <script src="../assets/js/main.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            requireAuth();
+      document.addEventListener("DOMContentLoaded", function () {
+        requireAuth();
 
-            // Initialize charts
-            const ctx1 = document.getElementById('studentGrowthChart');
-            if (ctx1) {
-                new Chart(ctx1, {
-                    type: 'line',
-                    data: {
-                        labels: ['2020', '2021', '2022', '2023', '2024'],
-                        datasets: [{
-                            label: 'Jumlah Siswa',
-                            data: [980, 1050, 1120, 1175, 1234],
-                            borderColor: '#006A67',
-                            backgroundColor: 'rgba(0, 106, 103, 0.1)',
-                            tension: 0.4
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false
-                    }
-                });
-            }
+        // Initialize charts
+        const ctx1 = document.getElementById("studentGrowthChart");
+        if (ctx1) {
+          new Chart(ctx1, {
+            type: "line",
+            data: {
+              labels: ["2020", "2021", "2022", "2023", "2024"],
+              datasets: [
+                {
+                  label: "Jumlah Siswa",
+                  data: [980, 1050, 1120, 1175, 1234],
+                  borderColor: "#006A67",
+                  backgroundColor: "rgba(0, 106, 103, 0.1)",
+                  tension: 0.4,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+            },
+          });
+        }
 
-            const ctx2 = document.getElementById('majorDistributionChart');
-            if (ctx2) {
-                new Chart(ctx2, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['IPA', 'IPS'],
-                        datasets: [{
-                            data: [623, 611],
-                            backgroundColor: ['#006A67', '#28a745']
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false
-                    }
-                });
-            }
+        const ctx2 = document.getElementById("majorDistributionChart");
+        if (ctx2) {
+          new Chart(ctx2, {
+            type: "doughnut",
+            data: {
+              labels: ["IPA", "IPS"],
+              datasets: [
+                {
+                  data: [623, 611],
+                  backgroundColor: ["#006A67", "#28a745"],
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+            },
+          });
+        }
 
-            const ctx3 = document.getElementById('academicPerformanceChart');
-            if (ctx3) {
-                new Chart(ctx3, {
-                    type: 'bar',
-                    data: {
-                        labels: ['10 IPA', '10 IPS', '11 IPA', '11 IPS', '12 IPA', '12 IPS'],
-                        datasets: [{
-                            label: 'Rata-rata Nilai',
-                            data: [82, 78, 85, 80, 88, 83],
-                            backgroundColor: '#ffc107'
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false
-                    }
-                });
-            }
-        });
+        const ctx3 = document.getElementById("academicPerformanceChart");
+        if (ctx3) {
+          new Chart(ctx3, {
+            type: "bar",
+            data: {
+              labels: [
+                "10 IPA",
+                "10 IPS",
+                "11 IPA",
+                "11 IPS",
+                "12 IPA",
+                "12 IPS",
+              ],
+              datasets: [
+                {
+                  label: "Rata-rata Nilai",
+                  data: [82, 78, 85, 80, 88, 83],
+                  backgroundColor: "#ffc107",
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+            },
+          });
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
