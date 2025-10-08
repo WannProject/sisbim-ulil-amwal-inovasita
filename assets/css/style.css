@@ -239,3 +239,31 @@ body {
     border-top: 1px solid #dee2e6;
     margin-top: auto;
 }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .main-content.expanded {
+        margin-left: 0;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+}
+
