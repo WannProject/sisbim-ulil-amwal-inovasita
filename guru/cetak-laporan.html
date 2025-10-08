@@ -1,233 +1,245 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cetak Laporan - SISBIM MA Ulil Amwal</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body>
     <!-- Sidebar -->
     <nav class="sidebar">
-        <div class="sidebar-header">
-            <img src="../assets/img/logo.jpg" alt="MA Ulil Amwal Logo" class="sidebar-logo">
-            <h4>SISBIM</h4>
-            <p>MA Ulil Amwal</p>
-        </div>
-        <div class="sidebar-menu">
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="dashboard.html">
-                        <i class="fas fa-tachometer-alt"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="input-nilai.html">
-                        <i class="fas fa-edit"></i>
-                        <span>Input Nilai</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="data-siswa.html">
-                        <i class="fas fa-user-graduate"></i>
-                        <span>Data Siswa</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="rekap-nilai.html">
-                        <i class="fas fa-chart-bar"></i>
-                        <span>Rekap Nilai</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="cetak-laporan.html">
-                        <i class="fas fa-print"></i>
-                        <span>Cetak Laporan</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="jadwal-mengajar.html">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>Jadwal Mengajar</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="profil.html">
-                        <i class="fas fa-user"></i>
-                        <span>Profil</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
+      <div class="sidebar-header">
+        <img
+          src="../assets/img/logo.jpg"
+          alt="MA Ulil Amwal Logo"
+          class="sidebar-logo"
+        />
+        <h4>SISBIM</h4>
+        <p>MA Ulil Amwal</p>
+      </div>
+      <div class="sidebar-menu">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">
+              <i class="fas fa-tachometer-alt"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="input-nilai.html">
+              <i class="fas fa-edit"></i>
+              <span>Input Nilai</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="data-siswa.html">
+              <i class="fas fa-user-graduate"></i>
+              <span>Data Siswa</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="rekap-nilai.html">
+              <i class="fas fa-chart-bar"></i>
+              <span>Rekap Nilai</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="cetak-laporan.html">
+              <i class="fas fa-print"></i>
+              <span>Cetak Laporan</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="jadwal-mengajar.html">
+              <i class="fas fa-calendar-alt"></i>
+              <span>Jadwal Mengajar</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="profil.html">
+              <i class="fas fa-user"></i>
+              <span>Profil</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </nav>
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Top Navigation -->
-        <nav class="top-navbar">
-            <div class="d-flex align-items-center">
-                <button class="btn btn-link text-dark me-3" id="sidebarToggle">
-                    <i class="fas fa-bars"></i>
+      <!-- Top Navigation -->
+      <nav class="top-navbar">
+        <div class="d-flex align-items-center">
+          <button class="btn btn-link text-dark me-3" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+          </button>
+          <h4 class="mb-0">Cetak Laporan</h4>
+        </div>
+        <div class="d-flex align-items-center">
+          <span class="me-3" data-user-info="username">Guru</span>
+          <button class="btn btn-outline-danger btn-sm" id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </div>
+      </nav>
+
+      <!-- Content -->
+      <div class="container-fluid p-4">
+        <h2 class="mb-4">Cetak Laporan Nilai</h2>
+
+        <!-- Report Selection -->
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <i class="fas fa-file-pdf fa-3x text-danger mb-3"></i>
+                <h5>Laporan Nilai Per Siswa</h5>
+                <p class="text-muted">Cetak rapor per siswa</p>
+                <button class="btn btn-danger" onclick="printReport('siswa')">
+                  <i class="fas fa-print"></i> Cetak PDF
                 </button>
-                <h4 class="mb-0">Cetak Laporan</h4>
+              </div>
             </div>
-            <div class="d-flex align-items-center">
-                <span class="me-3" data-user-info="username">Guru</span>
-                <button class="btn btn-outline-danger btn-sm" id="logoutBtn">
-                    <i class="fas fa-sign-out-alt"></i> Logout
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <i class="fas fa-file-excel fa-3x text-success mb-3"></i>
+                <h5>Laporan Kelas</h5>
+                <p class="text-muted">Export nilai per kelas</p>
+                <button class="btn btn-success" onclick="printReport('kelas')">
+                  <i class="fas fa-download"></i> Export Excel
                 </button>
+              </div>
             </div>
-        </nav>
-
-        <!-- Content -->
-        <div class="container-fluid p-4">
-            <h2 class="mb-4">Cetak Laporan Nilai</h2>
-
-            <!-- Report Selection -->
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <i class="fas fa-file-pdf fa-3x text-danger mb-3"></i>
-                            <h5>Laporan Nilai Per Siswa</h5>
-                            <p class="text-muted">Cetak rapor per siswa</p>
-                            <button class="btn btn-danger" onclick="printReport('siswa')">
-                                <i class="fas fa-print"></i> Cetak PDF
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <i class="fas fa-file-excel fa-3x text-success mb-3"></i>
-                            <h5>Laporan Kelas</h5>
-                            <p class="text-muted">Export nilai per kelas</p>
-                            <button class="btn btn-success" onclick="printReport('kelas')">
-                                <i class="fas fa-download"></i> Export Excel
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <i class="fas fa-chart-bar fa-3x text-info mb-3"></i>
-                            <h5>Analisis Nilai</h5>
-                            <p class="text-muted">Laporan analisis statistik</p>
-                            <button class="btn btn-info" onclick="printReport('analisis')">
-                                <i class="fas fa-print"></i> Cetak PDF
-                            </button>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <i class="fas fa-chart-bar fa-3x text-info mb-3"></i>
+                <h5>Analisis Nilai</h5>
+                <p class="text-muted">Laporan analisis statistik</p>
+                <button class="btn btn-info" onclick="printReport('analisis')">
+                  <i class="fas fa-print"></i> Cetak PDF
+                </button>
+              </div>
             </div>
-
-            <!-- Filter Form -->
-            <div class="card mt-4">
-                <div class="card-header">
-                    <h5>Filter Laporan</h5>
-                </div>
-                <div class="card-body">
-                    <form id="reportFilterForm">
-                        <div class="row">
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label">Kelas</label>
-                                <select class="form-select" required>
-                                    <option value="">Pilih Kelas</option>
-                                    <option value="10 IPA">10 IPA</option>
-                                    <option value="10 IPS">10 IPS</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label">Mapel</label>
-                                <select class="form-select" required>
-                                    <option value="">Pilih Mapel</option>
-                                    <option value="Matematika">Matematika</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label">Semester</label>
-                                <select class="form-select" required>
-                                    <option value="">Pilih Semester</option>
-                                    <option value="1">Ganjil</option>
-                                    <option value="2">Genap</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label">Tahun Ajaran</label>
-                                <select class="form-select" required>
-                                    <option value="2024/2025">2024/2025</option>
-                                </select>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-filter"></i> Terapkan Filter
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Report History -->
-            <div class="card mt-4">
-                <div class="card-header">
-                    <h5>Riwayat Cetak Laporan</h5>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Tanggal</th>
-                                    <th>Jenis Laporan</th>
-                                    <th>Kelas</th>
-                                    <th>Mapel</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>25 Sep 2024</td>
-                                    <td>Nilai Per Siswa</td>
-                                    <td>10 IPA</td>
-                                    <td>Matematika</td>
-                                    <td><span class="badge bg-success">Completed</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-success"><i class="fas fa-download"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
 
-        <!-- Footer -->
-        <div class="footer">
-            <p>&copy; 2024 SISBIM MA Ulil Amwal. All rights reserved.</p>
+        <!-- Filter Form -->
+        <div class="card mt-4">
+          <div class="card-header">
+            <h5>Filter Laporan</h5>
+          </div>
+          <div class="card-body">
+            <form id="reportFilterForm">
+              <div class="row">
+                <div class="col-md-3 mb-3">
+                  <label class="form-label">Kelas</label>
+                  <select class="form-select" required>
+                    <option value="">Pilih Kelas</option>
+                    <option value="10 IPA">10 IPA</option>
+                    <option value="10 IPS">10 IPS</option>
+                  </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label class="form-label">Mapel</label>
+                  <select class="form-select" required>
+                    <option value="">Pilih Mapel</option>
+                    <option value="Matematika">Matematika</option>
+                  </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label class="form-label">Semester</label>
+                  <select class="form-select" required>
+                    <option value="">Pilih Semester</option>
+                    <option value="1">Ganjil</option>
+                    <option value="2">Genap</option>
+                  </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label class="form-label">Tahun Ajaran</label>
+                  <select class="form-select" required>
+                    <option value="2024/2025">2024/2025</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-filter"></i> Terapkan Filter
+              </button>
+            </form>
+          </div>
         </div>
+
+        <!-- Report History -->
+        <div class="card mt-4">
+          <div class="card-header">
+            <h5>Riwayat Cetak Laporan</h5>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Tanggal</th>
+                    <th>Jenis Laporan</th>
+                    <th>Kelas</th>
+                    <th>Mapel</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>25 Sep 2024</td>
+                    <td>Nilai Per Siswa</td>
+                    <td>10 IPA</td>
+                    <td>Matematika</td>
+                    <td><span class="badge bg-success">Completed</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-success">
+                        <i class="fas fa-download"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>&copy; 2025 SISBIM MA Ulil Amwal. All rights reserved.</p>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/auth.js"></script>
     <script src="../assets/js/main.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            requireAuth();
-        });
+      document.addEventListener("DOMContentLoaded", function () {
+        requireAuth();
+      });
 
-        function printReport(type) {
-            showLoading();
-            setTimeout(() => {
-                hideLoading();
-                showAlert(`Laporan ${type} berhasil diproses!`, 'success');
-            }, 2000);
-        }
+      function printReport(type) {
+        showLoading();
+        setTimeout(() => {
+          hideLoading();
+          showAlert(`Laporan ${type} berhasil diproses!`, "success");
+        }, 2000);
+      }
     </script>
-</body>
+  </body>
 </html>
