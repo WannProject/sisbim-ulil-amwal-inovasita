@@ -13,6 +13,48 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../assets/css/style.css" />
+    <style>
+      .profile-photo-section .card-body {
+        padding: 2rem;
+      }
+
+      .profile-photo-section img {
+        border: 3px solid #e9ecef;
+        transition: all 0.3s ease;
+      }
+
+      .profile-photo-section img:hover {
+        border-color: #0d6efd;
+        transform: scale(1.05);
+      }
+
+      .form-control:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+      }
+
+      .btn-primary {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+      }
+
+      .btn-primary:hover {
+        background-color: #0b5ed7;
+        border-color: #0a58ca;
+      }
+
+      .card {
+        border: 1px solid #e9ecef;
+        border-radius: 0.5rem;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+      }
+
+      .card-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #e9ecef;
+        font-weight: 600;
+      }
+    </style>
   </head>
   <body>
     <!-- Sidebar -->
@@ -103,23 +145,7 @@
         <h2 class="mb-4">Profil Saya</h2>
 
         <div class="row">
-          <div class="col-md-4">
-            <div class="card text-center">
-              <div class="card-body">
-                <img
-                  src="https://via.placeholder.com/150"
-                  class="rounded-circle mb-3"
-                  alt="Profile"
-                />
-                <h5>Administrator</h5>
-                <p class="text-muted">System Administrator</p>
-                <button class="btn btn-outline-primary btn-sm">
-                  <i class="fas fa-camera"></i> Ganti Foto
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-8">
+          <div class="col-md-12">
             <div class="card">
               <div class="card-header">
                 <h5>Informasi Pribadi</h5>
@@ -136,8 +162,13 @@
                       />
                     </div>
                     <div class="col-md-6 mb-3">
-                      <label class="form-label">Username</label>
-                      <input type="text" class="form-control" value="admin" />
+                      <label class="form-label">NIP/NUPTK</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="198506152010011001"
+                        readonly
+                      />
                     </div>
                     <div class="col-md-6 mb-3">
                       <label class="form-label">Email</label>
@@ -175,45 +206,57 @@
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Change Password Modal -->
-      <div class="modal fade" id="changePasswordModal" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Ganti Password</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="mb-3">
-                  <label class="form-label">Password Lama</label>
-                  <input type="password" class="form-control" required />
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Password Baru</label>
-                  <input type="password" class="form-control" required />
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Konfirmasi Password Baru</label>
-                  <input type="password" class="form-control" required />
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Batal
-              </button>
-              <button type="button" class="btn btn-primary">Simpan</button>
-            </div>
+    <!-- Change Password Modal -->
+    <div
+      class="modal fade"
+      id="changePasswordModal"
+      tabindex="-1"
+      aria-labelledby="changePasswordModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="changePasswordModalLabel">
+              Ganti Password
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label class="form-label">Password Lama</label>
+                <input type="password" class="form-control" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Password Baru</label>
+                <input type="password" class="form-control" required />
+                <small class="text-muted">Minimal 8 karakter</small>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Konfirmasi Password Baru</label>
+                <input type="password" class="form-control" required />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Batal
+            </button>
+            <button type="button" class="btn btn-primary">
+              Simpan Perubahan
+            </button>
           </div>
         </div>
       </div>
